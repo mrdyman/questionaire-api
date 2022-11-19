@@ -36,6 +36,14 @@ class ApiAuthController extends Controller
         }
     }
 
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        return response([
+            'message' => 'Logged out.'
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

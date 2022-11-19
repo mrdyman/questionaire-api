@@ -21,20 +21,21 @@ use App\Http\Controllers\api\ApiResultController;
 
 //? public Routes
 Route::post('/login', [ApiAuthController::class, 'login']);
+Route::get('/soal', [ApiSoalController::class, 'index']);
+Route::post('/jawaban', [ApiJawabanController::class, 'store']);
+Route::post('/result', [ApiResultController::class, 'store']);
 
 //? Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::get('/mahasiswa', [ApiMahasiswaController::class, 'index']);
     Route::post('/mahasiswa', [ApiMahasiswaController::class, 'store']);
     Route::delete('/mahasiswa', [ApiMahasiswaController::class, 'destroy']);
     
-    Route::get('/soal', [ApiSoalController::class, 'index']);
     Route::post('/soal', [ApiSoalController::class, 'store']);
 
     Route::get('/jawaban', [ApiJawabanController::class, 'index']);
-    Route::post('/jawaban', [ApiJawabanController::class, 'store']);
     Route::delete('/jawaban', [ApiJawabanController::class, 'destroy']);
 
     Route::get('/result', [ApiResultController::class, 'index']);
-    Route::post('/result', [ApiResultController::class, 'store']);
 });
