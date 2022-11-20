@@ -24,9 +24,9 @@ class ApiAuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = User::where('username', $credentials['username'])->first();
             $token = $user->createToken('myapptoken')->plainTextToken;
+            $user->token = $token;
             return response([
                 "message" => 'welcome.',
-                "token" => $token,
                 "data" => $user,
             ], 201);
         }else{

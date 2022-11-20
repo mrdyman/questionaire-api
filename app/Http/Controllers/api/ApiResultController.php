@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jawaban;
+use App\Models\Mahasiswa;
 use App\Models\Result;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class ApiResultController extends Controller
      */
     public function index()
     {
-        $result = Result::with('mahasiswa', 'jawaban')->get();
+        $result = Result::with('mahasiswa', 'jawaban.soal')->orderBy('created_at', 'DESC')->get();
         if($result->isEmpty()){
             return response([
                 "message" => 'Data not found!',
@@ -76,8 +78,34 @@ class ApiResultController extends Controller
      * @param  \App\Models\Result  $result
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Result $result)
+    public function destroy(Request $request)
     {
-        //
+        $data = Result::find($request->id);
+        if(!$data){
+            return response([
+                "message" => 'data not found',
+            ], 404); 
+        }
+
+        $mahasiswa = Mahasiswa::where('id', $data->mahasiswa_id);
+        $jawaban = Jawaban::where('mahasiswa_id', $data->mahasiswa_id);
+
+        if($mahasiswa){
+            $jawaban->delete();
+        }
+
+        if($jawaban){
+            $jawaban->delete();
+        }
+
+        if ($data->delete()){
+            return response([
+                "message" => 'data deleted!',
+            ], 200); 
+        }
+
+        return response([
+            "message" => 'failed to delete data!',
+        ], 500); 
     }
 }

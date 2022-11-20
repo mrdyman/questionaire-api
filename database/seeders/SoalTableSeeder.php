@@ -46,9 +46,7 @@ class SoalTableSeeder extends Seeder
             3 => 
             array (
                 'id' => 4,
-                'soal' => 'Vagina, mulut rahim/serviks, rahim, tuba dan 
-indung telur merupakan alat reproduksi bagian 
-dalam',
+                'soal' => 'Vagina, mulut rahim/serviks, rahim, tuba dan indung telur merupakan alat reproduksi bagian dalam',
                 'is_benar' => 1,
                 'created_at' => '2022-11-19 00:09:50',
                 'updated_at' => '2022-11-19 00:09:50',
@@ -56,8 +54,7 @@ dalam',
             4 => 
             array (
                 'id' => 5,
-                'soal' => 'Organ reproduksi remaja perempuan hanya 
-vagina dan selaput darah.',
+                'soal' => 'Organ reproduksi remaja perempuan hanya vagina dan selaput darah.',
                 'is_benar' => 1,
                 'created_at' => '2022-11-19 00:10:05',
                 'updated_at' => '2022-11-19 00:10:05',
@@ -65,8 +62,7 @@ vagina dan selaput darah.',
             5 => 
             array (
                 'id' => 6,
-                'soal' => 'Remaja perempuan yang sudah menstruasi 
-dapat hamil jika berhubungan seksual',
+                'soal' => 'Remaja perempuan yang sudah menstruasi dapat hamil jika berhubungan seksual',
                 'is_benar' => 1,
                 'created_at' => '2022-11-19 00:10:19',
                 'updated_at' => '2022-11-19 00:10:19',
@@ -98,9 +94,7 @@ dapat hamil jika berhubungan seksual',
             9 => 
             array (
                 'id' => 10,
-            'soal' => 'Abortus (tindakan menggugurkan kandungan) 
-berisiko mengakibatkan kematian karena 
-perdarahan',
+            'soal' => 'Abortus (tindakan menggugurkan kandungan) berisiko mengakibatkan kematian karena perdarahan',
                 'is_benar' => 1,
                 'created_at' => '2022-11-19 00:11:22',
                 'updated_at' => '2022-11-19 00:11:22',

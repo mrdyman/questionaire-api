@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jawaban;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
@@ -41,10 +42,11 @@ class ApiMahasiswaController extends Controller
             'clases' => 'required|string',
         ]);
         
-        Mahasiswa::create($request->all());
+        $data = Mahasiswa::create($request->all());
 
         return response([
             "message" => 'data mahasiswa created!',
+            "data" => $data
         ], 201); 
     }
 
@@ -73,6 +75,12 @@ class ApiMahasiswaController extends Controller
             return response([
                 "message" => 'mahasiswa not found',
             ], 404); 
+        }
+
+        $jawaban = Jawaban::where('mahasiswa_id', $data->id);
+
+        if($jawaban){
+            $jawaban->delete();
         }
 
         if ($data->delete()){
